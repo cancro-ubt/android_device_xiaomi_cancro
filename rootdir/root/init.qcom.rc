@@ -959,7 +959,8 @@ service sensorext /system/bin/sensorextd
     disabled
 
 service sensorservice /system/bin/sensorservice
-    class late_start
+    class main
     user root
     group root
-    disabled
+#    class late_start
+#    disabled
