@@ -89,7 +89,7 @@ PRODUCT_PACKAGES += \
     camera.msm8974
 
 # droidmedia
-PRODUCT_PACKAGES += 
+PRODUCT_PACKAGES += \
     libdroidmedia \
     minimediaservice \
     minisfservice \
