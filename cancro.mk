@@ -88,6 +88,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     camera.msm8974
 
+# droidmedia
+PRODUCT_PACKAGES += 
+    libdroidmedia \
+    minimediaservice \
+    minisfservice \
+    minimediaservice
+
 # Camera api
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
