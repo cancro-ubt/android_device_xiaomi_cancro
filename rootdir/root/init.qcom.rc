@@ -894,7 +894,7 @@ service charger /charger
 
 service hvdcp /system/bin/hvdcp
     setenv UEVENT_NETLINK_GROUPS 0xFFFFFFFD
-    setenv LD_PRELOAD /usr/libexec/droid-hybris/system/lib/libcutils.so
+    setenv LD_PRELOAD /system/lib/libcutils.so
     class core
     user root
     disabled
@@ -907,7 +907,7 @@ on property:persist.usb.hvdcp.detect=false
 
 service charger_monitor /system/bin/charger_monitor
     setenv UEVENT_NETLINK_GROUPS 0xFFFFFFFD
-    setenv LD_PRELOAD /usr/libexec/droid-hybris/system/lib/libcutils.so
+    setenv LD_PRELOAD /system/lib/libcutils.so
     user system
     group system
     disabled
