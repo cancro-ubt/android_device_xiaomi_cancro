@@ -378,6 +378,14 @@ on post-fs-data
     chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/stylus
     restorecon /sys/bus/i2c/drivers/atmel_mxt_ts_640t/2-004b/stylus
 
+    #wifi
+    insmod /system/lib/modules/scsi_wait_scan.ko
+    insmod /system/lib/modules/radio-iris-transport.ko
+    insmod /system/lib/modules/wlan.ko
+
+    write /dev/wcnss_wlan 1
+    write /sys/module/wlan/parameters/fwpath sta
+
 on charger
     wait /dev/block/platform/msm_sdcc.1/by-name/system
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system wait ro barrier=1
