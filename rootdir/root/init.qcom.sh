@@ -249,3 +249,10 @@ case "$target" in
         start_charger_monitor
         ;;
 esac
+
+
+#wifi
+insmod /system/lib/modules/scsi_wait_scan.ko
+insmod /system/lib/modules/radio-iris-transport.ko
+insmod /system/lib/modules/wlan.ko
+    

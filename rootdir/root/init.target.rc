@@ -98,6 +98,11 @@ on boot
     chown system system /sys/devices/fda0c000.qcom,cci/1c.qcom,actuator/bu63163
     exec /system/bin/sh /system/bin/atmel_hover_tune.sh
 
+    #Timekeep // this is a temporary fix to opo
+    mkdir /data/time
+    chmod 777 /data/time
+
+
 # Dynamically modify golden_ref setting
 on property:persist.atmel.golden.enable=1
     write /sys/bus/i2c/devices/2-004a/golden_en 1
@@ -134,17 +139,6 @@ on property:bluetooth.hsic_ctrl=load_wlan
 on property:bluetooth.hsic_ctrl=unbind_hsic
     start bt_hsic_control
 
-#start camera server as daemon
-service qcamerasvr /system/bin/mm-qcamera-daemon
-    class late_start
-    user camera
-    group camera system inet input graphics
-
-#start GNSS/Sensor interface daemon
-service gsiff_daemon /system/bin/gsiff_daemon
-    class late_start
-    user gps
-    group gps net_raw misc
 
 service qrngd /system/bin/qrngd -f
     class main
@@ -200,6 +194,7 @@ service adsprpcd /system/bin/adsprpcd
    class main
    user media
    group media
+   disabled
 
 service audiod /system/bin/audiod
    class late_start
