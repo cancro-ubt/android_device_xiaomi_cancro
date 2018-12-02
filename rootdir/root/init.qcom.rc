@@ -547,23 +547,17 @@ service start_hci_filter /system/bin/wcnss_filter
     group bluetooth
     disabled
 
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-    class core
+service init_wlan_bt /system/bin/sh /system/etc/init_wlan_bt.sh
+    class main
     user root
-    oneshot
-
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
+    group root
     oneshot
 
 on property:bluetooth.hciattach=true
-    start hciattach
+    write /sys/module/hci_smd/parameters/hcismd_set 1
 
 on property:bluetooth.hciattach=false
-    setprop bluetooth.status off
+write /sys/module/hci_smd/parameters/hcismd_set 0
 
 service hciattach_ath3k /system/bin/sh /system/etc/init.ath3k.bt.sh
      class late_start
@@ -847,8 +841,8 @@ on property:usb_uicc.spi_bridge_enabled=0
 #    disabled
 
 # virtual sdcard daemon running as media_rw (1023)
-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
-    class late_start
+#service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
+#    class late_start
 
 service fuse_uicc0 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/uicc0 /storage/uicc0
     class late_start

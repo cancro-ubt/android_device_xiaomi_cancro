@@ -125,7 +125,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv_x4.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_x4.bin \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv_x4lte.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_x4lte.bin \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv_x5.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_x5.bin
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv_x5.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_x5.bin \
+    $(LOCAL_PATH)/rootdir/root/init_wlan_bt.sh:system/etc/init_wlan_bt.sh
 
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
@@ -240,7 +241,9 @@ PRODUCT_PACKAGES += \
     libOmxVdecHevc \
     libOmxVenc \
     libstagefrighthw \
-    qcmediaplayer
+    qcmediaplayer \
+    media_codecs_ffmpeg.xml \
+    libffmpeg_omx
 
 PRODUCT_BOOT_JARS += qcmediaplayer
 
